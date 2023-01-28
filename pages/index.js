@@ -84,6 +84,7 @@ export default function Home() {
   </Card>
   
 </Card>
+    <Reader/>
 
     </main>
 
