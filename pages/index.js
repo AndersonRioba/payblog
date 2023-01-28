@@ -3,101 +3,30 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { Card, Button } from "flowbite-react";
 import Reader from './reader';
+import ArticleCard from './articleCard';
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Plutus News</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main>
-      
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Cardano Paid Blog</a>
-          
+          <a href="#">Plutus News</a>
         </h1>
-
         <p className={styles.description}>
         </p>
+      
+        <Reader />
 
-<Card>
-  <Card
-    horizontal={true}
-    imgSrc="https://flowbite.com/docs/images/blog/image-4.jpg"
-  >
-    <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      Title
-    </h3>
-    <h5 className="font-normal text-gray-700 dark:text-gray-400">
-      Subtitle
-    </h5>
-    <Button>
-    Read more
-  </Button>
-  </Card>
+        <ArticleCard/>
+        <ArticleCard/>
+        <ArticleCard/>
+        <ArticleCard/>
+      </main>
 
-  <Card
-    horizontal={true}
-    imgSrc="https://flowbite.com/docs/images/blog/image-4.jpg"
-  >
-    <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      Title
-    </h3>
-    <h5 className="font-normal text-gray-700 dark:text-gray-400">
-      Subtitle
-    </h5>
-    <Button>
-    Read more
-  </Button>
-  </Card>
-
-  <Card
-    horizontal={true}
-    imgSrc="https://flowbite.com/docs/images/blog/image-4.jpg"
-  >
-    <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      Title
-    </h3>
-    <h5 className="font-normal text-gray-700 dark:text-gray-400">
-      Subtitle
-    </h5>
-    <Button>
-    Read more
-  </Button>
-  </Card>
-
-  <Card
-    horizontal={true}
-    imgSrc="https://flowbite.com/docs/images/blog/image-4.jpg"
-  >
-    <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      Title
-    </h3>
-    <h5 className="font-normal text-gray-700 dark:text-gray-400">
-      Subtitle
-    </h5>
-    <Button>
-    Read more
-  </Button>
-  </Card>
-  
-</Card>
-    <Reader/>
-
-    </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
-      </footer>
 
       <style jsx>{`
         main {
