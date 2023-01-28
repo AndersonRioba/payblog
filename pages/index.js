@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { Card, Button } from "flowbite-react";
+import Reader from './reader';
 
 export default function Home() {
   return (
@@ -73,6 +74,8 @@ export default function Home() {
             </p>
           </a>
         </div>
+
+        <Reader/>
       </main>
 
       <footer>
