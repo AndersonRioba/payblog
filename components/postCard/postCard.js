@@ -1,6 +1,6 @@
 import { Card, Button } from "flowbite-react";
 
-export default function ArticleCard () {
+export default function PostCard () {
     return (
         <Card
         className="mb-3 mt-3"
