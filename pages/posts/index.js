@@ -1,17 +1,38 @@
-import styles from '../styles/Home.module.css';
-import PostCard from '../components/postCard/postCard';
+import Link from 'next/link';
+import { getAllPosts } from '../../lib/api'
+import PostCard from '../../components/postCard/postCard';
 
-export default function Explore() {
-    return (
-        <div className={styles.container}>
-        <main>
-          <PostCard/>
-          <PostCard/>
-          <PostCard/>
-          <PostCard/>
-        </main>
-  
-  
+export default function Posts({ posts }) {
+   return (
+     <div className="posts">
+       <h1>Posts</h1>
+ 
+      {posts.map(post => {
+        const prettyDate = new Date(post.createdAt).toLocaleString('en-US', {
+          month: 'short',
+          day: '2-digit',
+          year: 'numeric',
+        })
+
+        return (
+          <article key={post.slug}>
+            <h2>
+              <Link href={post.permalink}>
+                <p>{post.title}</p>
+              </Link>
+            </h2>
+
+            <time dateTime={post.createdAt}>{prettyDate}</time>
+
+            <p>{post.excerpt}</p>
+
+            <Link href={post.permalink}>
+              <p>Read more →</p>
+            </Link>
+          </article>
+        )
+      })}
+
         <style jsx>{`
           main {
             padding: 5rem 0;
@@ -62,6 +83,14 @@ export default function Explore() {
             box-sizing: border-box;
           }
         `}</style>
-      </div>
-    )
+     </div>
+   )
+ }
+ 
+ export function getStaticProps() {
+    return {
+      props: {
+        posts: getAllPosts(),
+      }
+    }
   }

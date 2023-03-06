@@ -4,7 +4,7 @@ const NavItem = props =>(
     <Link href={props.url}><p className="text-xl font-bold text-black px-5 py-1 hover:bg-red-500 rounded transition-colors duration-300">{props.text}</p></Link>
     );
 
-function Header() {
+export default function Header() {
   return (
     <div className="container mx-auto">
       <nav className="flex justify-between p-4">
@@ -14,12 +14,10 @@ function Header() {
         </div>  
         </div>
         <div className="flex mt-4">
-          <NavItem url="/Explore" text="Explore"/>
-          <NavItem url="/Explore" text="Connect"/>
+          <NavItem url="/posts" text="Explore"/>
+          <NavItem url="/Explore" text="Connect" />
         </div>
       </nav>
     </div>
   )
 }
-
-export default Header
