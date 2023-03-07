@@ -1,6 +1,7 @@
-import Link from 'next/link';
-import { getAllPosts } from '../../lib/api'
-import { Card, Button } from "flowbite-react";
+import Image from 'next/image'
+import Link from 'next/link'
+import { getAllPosts, getAuthorBySlug  } from '../../lib/api'
+import { Card } from "flowbite-react"
 
 export default function Posts({ posts }) {
    return (
@@ -28,6 +29,13 @@ export default function Posts({ posts }) {
 
             <time dateTime={post.createdAt}>{prettyDate}</time>
 
+            <div>
+              <Image alt={post.author.name} src={post.author.profilePictureUrl} height="40" width="40" />
+
+              <span>{post.author.name}</span>
+            </div>
+
+
             <h5 className="font-normal text-gray-700 dark:text-gray-400">{post.excerpt}</h5>
 
             <Link href={post.permalink}>
@@ -43,9 +51,12 @@ export default function Posts({ posts }) {
  }
  
  export function getStaticProps() {
-    return {
-      props: {
-        posts: getAllPosts(),
-      }
+  return {
+    props: {
+      posts: getAllPosts().map(post => ({
+        ...post,
+        author: getAuthorBySlug(post.author),
+      })),
     }
   }
+}
