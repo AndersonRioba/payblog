@@ -1,10 +1,9 @@
-import { MeshProvider } from "@meshsdk/react";
 import React from 'react';
 
 export default function Hero() {
     return (
-        <div className="w-full p-20 bg-gray-100 h-96">
-            <div className="flex flex-col items-center justify-center">
+        <div className="flex w-full h-full items-center justify-center p-20 bg-gray-100">
+            <div className="flex-col ">
                 <h1 className="text-4xl font-bold">Heading Title</h1>
                 <p className="text-lg">Description Subheading</p>
                 <div className="mt-4">

@@ -1,13 +1,14 @@
 import Header from '../components/Header/header';
 import '../styles/globals.css';
-import { AppProps } from "next/app";
-import { MeshProvider } from "@meshsdk/react";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <><Header></Header><MeshProvider>
+    <>
+    <Header></Header>
+    <main className='m-0 p-0'>
       <Component {...pageProps} />
-    </MeshProvider></>
+    </main>
+    </>
   );
 }
 
