@@ -26,7 +26,7 @@ export default function Post({ post }) {
   })
 
   return (
-    <div className="w-screen h-full">
+    <div className="w-screen h-full ">
     <BlogHeader>
       <h1>{post.title}</h1>
       <div>

@@ -5,9 +5,9 @@ import { Card } from "flowbite-react"
 
 export default function Posts({ posts }) {
    return (
-    <div className="mb-3 justify-center'">
+    <div className="mb-3">
       <h1 className="mb-3">Posts</h1>
-     <div className="posts">
+     <div className="posts justify-center w-full">
  
       {posts.map(post => {
         const prettyDate = new Date(post.createdAt).toLocaleString('en-US', {
