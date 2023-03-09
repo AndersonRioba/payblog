@@ -9,6 +9,9 @@
     "@meshsdk/core": "^1.4.0",
     "@meshsdk/react": "^1.1.4",
     "@next-tools/dynamic": "^0.0.11",
+    "@polkadot/api": "^10.0.1",
+    "@polkadot/extension-dapp": "^0.45.1",
+    "@polkadot/rpc-provider": "^10.0.1",
     "all": "^0.0.0",
     "flowbite": "^1.6.3",
     "flowbite-react": "^0.3.8",
@@ -25,7 +28,6 @@
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4"
   },
-
   "browser": {
     "fs": false,
     "os": false,
