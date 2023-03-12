@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { getAllAuthors, getAllPosts } from '../../lib/api'
 
 export default function Authors({ authors }) {
+  
+  
   return (
     <div className="authors">
       <h1>Authors</h1>

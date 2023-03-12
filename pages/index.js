@@ -6,7 +6,7 @@ import { WsProvider, ApiPromise } from '@polkadot/api';
 
 export default function Home() {
 
-    const [api, setApi] = useState();
+  const [api, setApi] = useState();
 
   const setup = () => {
     const wsProvider = new WsProvider('wss://rococo-contracts-rpc.polkadot.io');
@@ -16,13 +16,10 @@ export default function Home() {
     } catch (e) {
       console.log(e);
     }
-    return () => {
-      wsProvider.disconnect();
-    };
   };
 
   useEffect(() => {
-    setup();
+    setup(); 
   }, []);
 
 

@@ -1,23 +1,48 @@
 import React from 'react';
-import bg from '../../public/hero.jpg';
-import dynamic from 'next/dynamic';
+import bg from '/public/hero.jpg';
 import { useEffect, useState } from 'react';
-const web3Accounts = dynamic(() => import('@polkadot/extension-dapp'), { ssr: false });
-const web3Enable = dynamic(() => import('@polkadot/extension-dapp'), { ssr: false });
-const { WsProvider, ApiPromise } = dynamic(() => import('@polkadot/api'), { ssr: false });
-const WProvider = dynamic(() => import('@polkadot/rpc-provider'), { ssr: false });
 
-function Hero(props) {
+export default function Hero(props) {
+  const [genHash, setGenHash] = useState('Fetching genesis hash...');
+  const [epochDuration, setEpochDuration] = useState('Fetching epoch...');
+  const [balance, setBalance] = useState('0.00');
+  const [chainName, setChainName] = useState('Getting chain name...');
   const [connected, setConnected] = useState(false);
+  const [accounts, setAccounts] = useState(null);
+
+  const [extensionDapp, setExtensionDapp] = useState(null);
+
+  useEffect(() => {
+    import('@polkadot/extension-dapp')
+      .then((module) => {
+        setExtensionDapp(module);
+      })
+      .catch((error) => {
+        console.error('Error loading @polkadot/extension-dapp:', error);
+      });
+  }, []);
 
   const handleConnect = async (api) => {
     const p = await api;
-    console.log(p.genesisHash.toHuman());
+
+    // Enable the extension
+    const extensions = await extensionDapp.web3Enable('payblog');
+  
+    // Get all the accounts from the extension
+    const accounts = await extensionDapp.web3Accounts();
+
+    // Set the signer to the first account from the extension
+    const injector = await extensionDapp.web3FromAddress(accounts[0].address);
+    p.setSigner(injector.signer);
+  
     setConnected(true);
+    setAccounts(accounts);
+
+    return p;
   };
 
   const style = {
-    backgroundImage: `url(${bg})`,
+    backgroundImage: 'url("../../public/hero.jpg")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
@@ -35,5 +60,3 @@ function Hero(props) {
     </div>
   );
 }
-
-export default Hero;
