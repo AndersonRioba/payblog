@@ -30,8 +30,20 @@ const subscribe = async(api) => {
     const accounts = await extensionDapp.web3Accounts();
 
     const account = accounts[0];
-    const transferExtrinsic = p.tx.balances.transfer('5HiW2C2YLsVit73jC7h3x25hbXGpMZp4qxmVF3Qh7VY26eqR', 200000000000);
+
+    const { nonce } = await p.query.system.account(account.address);
+    if (nonce.gt(BigInt(0))) {
+      setSubscribed(true);
+      console.log('Already subscribed');
+      return;
+    }
+
+    const transferExtrinsic = p.tx.balances.transfer(
+      '5HiW2C2YLsVit73jC7h3x25hbXGpMZp4qxmVF3Qh7VY26eqR', 
+      200000000000);
+
     const injector = await extensionDapp.web3FromSource(account.meta.source);
+
     transferExtrinsic.signAndSend(account.address, {signer: injector.signer}, ({status}) => {
       if(status.isInBlock) {
         setSubscribed(true);
